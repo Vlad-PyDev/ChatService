@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat App - Чат</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="chat-container">
+    <h1>Чат Комната</h1>
+    <form method="POST" action="{{ url_for('main') }}" id="chatForm">
+      <input type="text" name="username" placeholder="Ваше имя" required>
+      <input type="text" name="message" placeholder="Ваше сообщение" required>
+      <button type="submit" class="btn">Отправить</button>
+    </form>
+    <ul id="chat">
+      {% for msg in messages %}
+        <li><strong>{{ msg.username }}:</strong> {{ msg.message }}</li>
+      {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}" class="btn">На старт</a>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
